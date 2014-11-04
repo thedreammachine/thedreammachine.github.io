@@ -9,6 +9,17 @@
     Fiducial tracking:<br/>
     <iframe width="560" height="315" src="//www.youtube.com/embed/7EtBqYvfVtg" frameborder="0" allowfullscreen></iframe>
   </li>
+  <li>
+    Leg Detector<br/>
+
+    We were unable to get the leg detector working.
+
+    We tried using softshell , and made sure to remove the scan:=base_scan argument. Still nothing. We tried several other things based on searches Adam did, including changing the frame from odom_combined to camera_depth_frame (in a bunch of source files). We also tried running it with robot_pose_ekf open because somebody said that might help and the rqt graph indicated it depended on it.
+
+    We made sure that valid data was being published to /scan. We tried looking at the rqt_graph thing but could not make sense of the topics being published/listened to. We looked through the source code for the leg_detector to see if there were any constants that we could plausibly change. None of these things work.
+
+    We didn't try using pointcloud_to_laserscan because we already have data being published on /scan.
+  </li>
 </ol>
 
 <hr/>
