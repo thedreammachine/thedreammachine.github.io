@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Web GUI for The Dream Machine</title>
+    <title>The Dream Machine Web GUI</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -16,6 +16,9 @@
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
+
+    <!-- My Own gui.css: -->
+    <link href="css/gui.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -82,7 +85,6 @@
   </head>
 
   <body onload="init()">
-
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -92,12 +94,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">The Dream Machine</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="about.html">Home</a></li>
+            <li class="active"><a href="index.html">GUI</a></li>
             <li><a href="blog.html">Blog</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -108,42 +110,59 @@
 
       <div class="starter-template">
         <!-- For the ROS image viewer: -->
-        <h1>Camera</h1>
-        <p class="lead">Cool...</p>
-        <div id="mjpeg"></div>
-        <img src="http://localhost:8080/stream?topic=/camera/rgb/image_raw" alt="No Camera Yet" style="width:640px;height:480px"/>
-
+        <div id="image-div">
+          <h1>Camera</h1>
+          <div id="mjpeg"></div>
+          <img src="http://localhost:8080/stream?topic=/camera/rgb/image_raw" alt="Camera Not Available (Only works on the localhost.)" style="width:560px;height:420px"/>
+          <!-- 640/480 -->
+        </div>
       </div>
 
       <!-- Teleop: -->
       <div class="starter-template">
-        <h1>Teleop</h1>
-        <div id="speed-label"></div>
-        <div id="speed-slider"></div>
-        <div class="pull-left control">
-          <table>
-            <tr>
-              <td></td>
-              <!-- forward -->
-              <td><button class="btn btn-primary" onmousedown="base_command_start(0.5,0,0)" onmouseup="base_command_end()"><span class="glyphicon glyphicon-chevron-up"></span></button></td>
-              <td></td>
-            </tr>
-            <tr>
-              <!-- left -->
-              <td><button class="btn btn-primary" onmousedown="base_command_start(0, 0.5, 0)" onmouseup="base_command_end()"><span class="glyphicon glyphicon-chevron-left"></span></button></td>
-              <td></td>
-              <!-- right -->
-              <td><button class="btn btn-primary" onmousedown="base_command_start(0, -0.5, 0)" onmouseup="base_command_end()"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
-            </tr>
-            <tr>
-              <td></td>
-              <!-- backward -->
-              <td><button class="btn btn-primary" onmousedown="base_command_start(-0.5, 0, 0)" onmouseup="base_command_end()"><span class="glyphicon glyphicon-chevron-down"></span></button></td>
-              <td></td>
-            </tr>
-          </table>
+        <div id="command-div">
+          <h1>Command</h1>
+          <div id="speed-label"></div>
+          <div id="speed-slider"></div>
+          <div id="arrow-commands">
+            <table>
+              <tr>
+                <td></td>
+                <!-- forward -->
+                <td><button class="btn btn-primary" onmousedown="base_command_start(0.5,0,0)" onmouseup="base_command_end()"><span class="glyphicon glyphicon-arrow-up"></span></button></td>
+                <td></td>
+              </tr>
+              <tr>
+                <!-- left -->
+                <td><button class="btn btn-primary" onmousedown="base_command_start(0, 0.5, 0)" onmouseup="base_command_end()"><span class="glyphicon glyphicon-arrow-left"></span></button></td>
+                <td></td>
+                <!-- right -->
+                <td><button class="btn btn-primary" onmousedown="base_command_start(0, -0.5, 0)" onmouseup="base_command_end()"><span class="glyphicon glyphicon-arrow-right"></span></button></td>
+              </tr>
+              <tr>
+                <td></td>
+                <!-- backward -->
+                <td><button class="btn btn-primary" onmousedown="base_command_start(-0.5, 0, 0)" onmouseup="base_command_end()"><span class="glyphicon glyphicon-arrow-down"></span></button></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <div id="previous-commands">
+            <h3>Previous Commands</h3>
+            ...
+          </div>
         </div>
-      <div>
+      </div>
+
+      <div class="starter-template">
+        <div id="music-div">
+          <h3>
+            Music: Never Gonna Give You Up
+            <button class="btn btn-primary"><span class="glyphicon glyphicon-play"></span></button>
+            <button class="btn btn-primary"><span class="glyphicon glyphicon-pause"></span></button>
+          </h3>
+        </div>
+      </div>
 
     </div><!-- /.container -->
 
